@@ -52,8 +52,8 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.right > WINDOW_WIDTH:
             self.rect.right = WINDOW_WIDTH
 
-        if self.rect.top <= WINDOW_HEIGHT / 2:  # To determine that it does not exceed half of the screen
-            self.rect.top = WINDOW_HEIGHT / 2
+        if self.rect.top <= 0:  # 화면 전체이동
+            self.rect.top = 0
         elif self.rect.bottom >= WINDOW_HEIGHT:
             self.rect.bottom = WINDOW_HEIGHT
 
@@ -142,13 +142,13 @@ class Asteroid(pygame.sprite.Sprite):
             self.image = self.select_image(
                 os.path.join("resources", "energetic_asteroid.png"))
             if self.size_asteroid <= 10:
-                self.energy_lvl = 3
-            elif self.size_asteroid <= 20:
-                self.energy_lvl = 5
-            elif self.size_asteroid <= 30:
-                self.energy_lvl = 7
-            elif self.size_asteroid > 30:
                 self.energy_lvl = 10
+            elif self.size_asteroid <= 20:
+                self.energy_lvl = 7
+            elif self.size_asteroid <= 30:
+                self.energy_lvl = 5
+            elif self.size_asteroid > 30:
+                self.energy_lvl = 3
         else:  # Asteroid without energy
             self.image = self.select_image(
                 os.path.join("resources", "asteroid.png"))
